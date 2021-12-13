@@ -5,9 +5,52 @@
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css" rel="stylesheet">
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@500&display=swap" rel="stylesheet">
+    <style>
+    body, .mapboxgl-popup {
+      font-family: 'Work Sans', sans-serif;
+    }
+    .checked-underlined input:checked + div {
+      text-decoration: underline;
+    }
+    </style>
   </head>
-  <body class='min-h-screen p-0'>
-    <div class='absolute inset-0' id='map'></div>
+  <body class='min-h-screen p-0 flex flex-col divide-y divide-gray-500'>
+    <div class='p-4'>
+      <div class='text-2xl pb-4'>
+        Forest Carbon
+      </div>
+      <div class='flex items-center gap-x-10'>
+        <label class='block'>
+          <div>Indicator</div>
+          <select class="w-48 underline cursor-pointer px-0 appearance-none" name='indicator' id='indicator'>
+            <option>...</option>
+          </select>
+        </label>
+        <label class='block'>
+          <div>Year
+            <span id='year-text'></span>
+          </div>
+          <input id='year' type='range' min='2013' max='2019' />
+        </label>
+        <div class='block'>
+          <div>Level</div>
+          <div id='levels' class='flex items-center gap-x-2'>
+            <label class='checked-underlined cursor-pointer'>
+              <input checked  type='radio' class='hidden' name='levels' value='0' />
+              <div>Countries</div>
+            </label>
+            <label class='checked-underlined cursor-pointer'>
+              <input type='radio' class='hidden' name='levels' value='1' />
+              <div>Provinces</div>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class='flex-auto' id='map'></div>
     <script src='map.js'></script>
   </body>
 </html>
