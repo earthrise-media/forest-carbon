@@ -202,6 +202,7 @@ function addSources({meta0, meta1}) {
       console.log(getIndicatorValues(p))
       popup.addTo(map)
       popup.setLngLat(e.lngLat)
+      popup.setOffset(20);
       const elem = document.createElement('div')
       elem.innerHTML = `<h4>${p.Country}
         ${p.Province ? `/ ${p.Province}` : ''}
@@ -246,7 +247,7 @@ function addSources({meta0, meta1}) {
       return ((x - minx) / (maxx - minx)) * 80;
     }
     function scale(x) {
-      return ((x - min) / (max - min)) * 40;
+      return (((x - min) / (max - min)) * 36) + 2;
     }
     ctx.moveTo(scalex(values[0][0]), 40 - scale(values[0][1]))
     for (let item of values) {
