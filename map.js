@@ -224,7 +224,7 @@ function addSources({meta0, meta1}) {
   }
 
   function getIndicatorValues(p) {
-    return Object.entries(p).filter(([key, value]) => {
+    return Object.entries(p).filter(([key]) => {
       return key.startsWith(currentIndicator)
     }).map(([key, value]) => {
       return [+key.match(/(\d{4})/)[1], value];
