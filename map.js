@@ -170,7 +170,7 @@ function addSources({meta0, meta1}) {
         // When zoom is 18 or higher, buildings will be yellow.
         range.max,
         '#e15383'
-        ]
+      ]
     );
     map.setPaintProperty(`layer-${level}`, 'fill-opacity',
       [
@@ -203,7 +203,9 @@ function addSources({meta0, meta1}) {
       popup.addTo(map)
       popup.setLngLat(e.lngLat)
       const elem = document.createElement('div')
-      elem.innerHTML = `<h4>${p.Country}</h4>
+      elem.innerHTML = `<h4>${p.Country}
+        ${p.Province ? `/ ${p.Province}` : ''}
+      </h4>
       <div class='text-2xl font-semibold flex items-center gap-x-1'>
       <span id='sparkline'></span>
       ${val.toFixed(2)}</div>
@@ -274,7 +276,7 @@ function addSources({meta0, meta1}) {
     updateIndicator();
     updateMap();
   }
-  
+
   switchLevel();
   indicator.dispatchEvent(new CustomEvent('change'))
   updateMap();
